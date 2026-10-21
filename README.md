@@ -1,21 +1,26 @@
 # The Nomadic Preacher
 
-A simple static blog site. The live page is served from `index.html`.
+A free static blog hosted on GitHub Pages, with an optional free visual editor through Pages CMS.
 
-## Edit the site on GitHub
+## Write and edit stories
 
-1. Open `index.html` in this repository.
-2. Select the pencil icon to edit.
-3. Make your changes, then select **Commit changes** on the `main` branch. GitHub Pages will publish the update automatically after it is enabled.
+Once Pages CMS is connected to this repository:
 
-## Add a journal story
+1. Visit [app.pagescms.org](https://app.pagescms.org/) and sign in with GitHub.
+2. Open `NomadicPreacher.github.io`, then choose **Journal posts**.
+3. Add or edit a post with its title, date, category, summary, reading time, and story. Save it to publish the update.
 
-In `index.html`, find the section marked `id="posts"`. Copy an entire `<article class="card" ...> ... </article>` block and paste it before the closing `</div>` for the posts grid. Then change its category, date/read-time, title, summary, and link.
+The visual editor is provided by Pages CMS. Its GitHub App must be authorized for this repository before it can save changes. It writes the story data in `content/posts.json`; GitHub Pages then updates the live blog.
 
-Use one of these categories so the filter buttons include your post:
+## Edit the site design
+
+To change the layout, colors, navigation, or author bio, open `index.html` in this repository and select the pencil icon. Commit changes to `main` to publish them.
+
+## Categories
 
 - `road` — On the road
 - `faith` — Faith & reflection
 - `people` — People & place
 
-The page currently contains sample stories and an author-bio placeholder. Replace those with your own words. You can also update the colors and layout in the `<style>` section near the top of `index.html`.
+The current entries and author bio are sample content. Replace them with your own words before sharing the site widely.
+
