@@ -1,0 +1,27 @@
+[
+  {
+    "title": "A welcome from the road",
+    "date": "2026-10-20",
+    "category": "road",
+    "read_time": "4 min read",
+    "summary": "This is your space to introduce yourself, share what this journey is about, and invite readers along.",
+    "body": "<p>This is a sample story. Replace it with your own welcome and an invitation to readers.</p>"
+  },
+  {
+    "title": "Finding stillness in the in-between",
+    "date": "2026-10-20",
+    "category": "faith",
+    "read_time": "6 min read",
+    "summary": "A placeholder for a reflection on the unexpected pauses, transitions, and small moments of grace.",
+    "body": "<p>This is a sample story. Replace it with your own reflection.</p>"
+  },
+  {
+    "title": "The kindness of strangers",
+    "date": "2026-10-20",
+    "category": "people",
+    "read_time": "5 min read",
+    "summary": "A placeholder for a story about a person, a place, or an encounter that stayed with you.",
+    "body": "<p>This is a sample story. Replace it with your own encounter from the road.</p>"
+  }
+]
+
