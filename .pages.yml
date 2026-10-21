@@ -1,0 +1,42 @@
+media: content/images
+content:
+  - name: posts
+    label: Journal posts
+    type: file
+    path: content/posts.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Post title
+        type: string
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: category
+        label: Category
+        type: select
+        options:
+          values:
+            - name: road
+              label: On the road
+            - name: faith
+              label: Faith & reflection
+            - name: people
+              label: People & place
+      - name: read_time
+        label: Reading time
+        type: string
+      - name: summary
+        label: Short summary
+        type: text
+      - name: body
+        label: Story
+        type: rich-text
+        options:
+          format: html
+          switcher: false
+          media: false
+
