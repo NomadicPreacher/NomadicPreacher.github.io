@@ -39,4 +39,26 @@ content:
           format: html
           switcher: false
           media: false
-
+  - name: author
+    label: Author note
+    type: file
+    path: content/author.json
+    format: json
+    fields:
+      - name: title
+        label: Section heading
+        type: string
+        required: true
+      - name: note
+        label: Note from the author
+        type: rich-text
+        options:
+          format: html
+          switcher: false
+          media: false
+      - name: contact_label
+        label: Contact link text
+        type: string
+      - name: contact_url
+        label: Contact link URL
+        type: string
