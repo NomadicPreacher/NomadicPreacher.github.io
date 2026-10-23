@@ -24,6 +24,7 @@
   </style>
   <style>
     .contact-note{color:var(--muted);font:italic 15px var(--serif)}
+    .about-note{max-width:670px;color:#5f6258;font:18px/1.7 var(--serif)}.about-note p{margin:0}.about-note p+p{margin-top:1.2em}
     .story-dialog{border:0;padding:0;width:min(760px,calc(100% - 28px));max-width:760px;max-height:88vh;background:var(--white);color:var(--ink);box-shadow:0 18px 70px #17181255}
     .story-dialog::backdrop{background:#1c211dd9;backdrop-filter:blur(3px)}
     .story-content{padding:clamp(24px,5vw,52px);overflow:auto;max-height:88vh}
@@ -51,7 +52,7 @@
     <div class="grid" id="posts" aria-live="polite"></div><p class="empty" id="empty">Loading stories from the journal…</p>
   </main>
   <dialog class="story-dialog" id="story-dialog" aria-labelledby="story-title"><div class="story-content"><button class="story-close" type="button" aria-label="Close story">×</button><div class="eyebrow" id="story-category"></div><h2 id="story-title"></h2><div class="meta" id="story-meta"></div><div class="story-body" id="story-body"></div></div></dialog>
-  <div class="about-wrap" id="about"><section class="about"><div class="about-symbol" aria-hidden="true">✳</div><div><div class="eyebrow">A note from the author</div><h2>Pull up a chair.</h2><p>I'm [your name]—a preacher, traveler, and fellow wayfinder. This journal is a place for stories gathered along the road and honest reflections on faith, belonging, and what it means to keep moving. <em>(Make this yours: replace this paragraph with your story.)</em></p><span class="contact-note">Replace this with your contact link.</span></div></section></div>
+  <div class="about-wrap" id="about"><section class="about"><div class="about-symbol" aria-hidden="true">✳</div><div><div class="eyebrow">A note from the author</div><h2 id="author-title">Pull up a chair.</h2><div class="about-note" id="author-note"></div><div id="author-contact"></div></div></section></div>
   <footer><span class="foot-brand">The Nomadic Preacher</span><span>Made for the journey · © <span id="year"></span></span><span><a href="#top">Back to top ↑</a></span></footer>
   <script>
     const menu=document.querySelector('.menu'),nav=document.querySelector('nav');
@@ -106,6 +107,18 @@
     dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
     document.getElementById('year').textContent=new Date().getFullYear();
     fetch('./content/posts.json').then(response=>{if(!response.ok)throw new Error('Could not load stories');return response.json()}).then(data=>{posts=Array.isArray(data)?data:[];render()}).catch(()=>{empty.textContent='Stories are temporarily unavailable. Please check back soon.';empty.style.display='block'});
+    fetch('./content/author.json').then(response=>{if(!response.ok)throw new Error('Could not load author note');return response.json()}).then(author=>{
+      document.getElementById('author-title').textContent=author.title||'Pull up a chair.';
+      document.getElementById('author-note').replaceChildren(addSafeRichText(author.note||''));
+      const contact=document.getElementById('author-contact');contact.replaceChildren();
+      const label=String(author.contact_label||'').trim(),value=String(author.contact_url||'').trim();
+      if(label){
+        let href='',protocol='';
+        if(value){try{const url=new URL(value,location.href);if(['http:','https:','mailto:'].includes(url.protocol)){href=url.href;protocol=url.protocol}}catch{}}
+        if(href){const link=document.createElement('a');link.href=href;link.textContent=label;if(protocol!=='mailto:')link.rel='noopener noreferrer';contact.append(link)}
+        else{const note=document.createElement('span');note.className='contact-note';note.textContent=label;contact.append(note)}
+      }
+    }).catch(()=>{});
   </script>
 </body>
 </html>
